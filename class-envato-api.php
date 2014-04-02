@@ -12,6 +12,9 @@
  * @author      Japh <japh@satellitedev.com>
  * @since       1.0
  */
+
+if ( ! class_exists( 'Envato_API' ) ) :
+
 class Envato_API {
   /**
    * The buyer's Username
@@ -381,5 +384,4 @@ class Envato_API {
   }
 }
 
-/* End of file class-envato-api.php */
-/* Location: ./includes/class-envato-api.php */
+endif;
