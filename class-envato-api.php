@@ -69,14 +69,6 @@ class Envato_API {
    */
   public function __construct( $user_name = '', $api_key = '' ) {
 
-    if ( $user_name == '' ) {
-      $this->set_error( 'user_name', __( 'Please enter your Envato Marketplace Username.', 'envato' ) );
-    }
-
-    if ( $api_key == '' ) {
-      $this->set_error( 'api_key', __( 'Please enter your Envato Marketplace API Key.', 'envato' ) );
-    }
-
     $this->user_name  = $user_name;
     $this->api_key    = $api_key;
 
@@ -149,6 +141,36 @@ class Envato_API {
   }
 
   /**
+   * Set the user name for private set method requests.
+   *
+   * @param     string      The user name.
+   * @return    void
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function set_user_name( $user_name = '' ) {
+
+    $this->user_name = $user_name;
+
+  }
+
+  /**
+   * Set the API key for private set method requests.
+   *
+   * @param     string      The API key.
+   * @return    void
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function set_api_key( $api_key = '' ) {
+
+    $this->api_key = $api_key;
+
+  }
+
+  /**
    * Get private data.
    *
    * @param     string      Available sets: 'vitals', 'earnings-and-sales-by-month', 'statement', 'recent-sales', 'account', 'verify-purchase', 'download-purchase', 'wp-list-themes', 'wp-download'
@@ -163,12 +185,20 @@ class Envato_API {
    */
   public function private_set( $set = '', $user_name = '', $set_data = '', $allow_cache = false, $timeout = 300 ) {
 
-    if ( $set == '' ) {
-      $this->set_error( 'set', __( 'The API "set" is a required parameter.', 'envato' ) );
+    if ( $user_name == '' ) {
+      $user_name = $this->user_name;
     }
 
     if ( $user_name == '' ) {
-      $user_name = $this->user_name;
+      $this->set_error( 'user_name', __( 'Please enter your Envato Marketplace Username.', 'envato' ) );
+    }
+
+    if ( $this->api_key == '' ) {
+      $this->set_error( 'api_key', __( 'Please enter your Envato Marketplace API Key.', 'envato' ) );
+    }
+
+    if ( $set == '' ) {
+      $this->set_error( 'set', __( 'The API "set" is a required parameter.', 'envato' ) );
     }
 
     if ( $set_data !== '' ) {
