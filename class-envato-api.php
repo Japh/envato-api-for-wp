@@ -82,6 +82,23 @@ class Envato_API {
   }
 
   /**
+   * Get public data.
+   *
+   * @param     string      Available sets: 'active-threads', 'number-of-files', 'forum_posts', 'releases', 'thread-status', 'total-users', 'item-prices', 'user', 'user-items-by-site', 'search', 'popular', 'item', 'collection', 'features', 'new-files', 'new-files-from-user', 'random-new-files'
+   * @param     string      Additional set data such as marketplace name or item id.
+   * @param     bool        Allow API calls to be cached. Default false.
+   * @param     int         Set transient timeout. Default 300 seconds (5 minutes).
+   * @return    array       An array of values (possibly cached) from the requested set, or an error message.
+   *
+   * @access    public
+   * @since     1.0
+   * @updated   1.3
+   */
+  public function public_set( $set = '', $set_data = '', $allow_cache = true, $timeout = 3600 ) {
+
+  }
+
+  /**
    * Get private user data.
    *
    * @param     string      Available sets: 'vitals', 'earnings-and-sales-by-month', 'statement', 'recent-sales', 'account', 'verify-purchase', 'download-purchase', 'wp-list-themes', 'wp-download'
