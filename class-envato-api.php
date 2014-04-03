@@ -99,7 +99,7 @@ class Envato_API {
   }
 
   /**
-   * Get private user data.
+   * Get private data.
    *
    * @param     string      Available sets: 'vitals', 'earnings-and-sales-by-month', 'statement', 'recent-sales', 'account', 'verify-purchase', 'download-purchase', 'wp-list-themes', 'wp-download'
    * @param     string      The buyer/author username to test against.
@@ -111,7 +111,7 @@ class Envato_API {
    * @access    public
    * @since     1.0
    */
-  public function private_user_data( $set = '', $user_name = '', $set_data = '', $allow_cache = false, $timeout = 300 ) {
+  public function private_set( $set = '', $user_name = '', $set_data = '', $allow_cache = false, $timeout = 300 ) {
 
     if ( $set == '' ) {
       $this->set_error( 'set', __( 'The API "set" is a required parameter.', 'envato' ) );
@@ -166,7 +166,7 @@ class Envato_API {
    */
   public function wp_list_themes( $allow_cache = true, $timeout = 300 ) {
 
-    return $this->private_user_data( 'wp-list-themes', $this->user_name, '', $allow_cache, $timeout );
+    return $this->private_set( 'wp-list-themes', $this->user_name, '', $allow_cache, $timeout );
 
   }
 
@@ -187,7 +187,7 @@ class Envato_API {
       $this->set_error( 'item_id', __( 'The Envato Marketplace "item ID" is a required parameter.', 'envato' ) );
     }
 
-    $download = $this->private_user_data( 'wp-download', $this->user_name, $item_id );
+    $download = $this->private_set( 'wp-download', $this->user_name, $item_id );
 
     if ( $errors = $this->api_errors() ) {
       return $errors;
