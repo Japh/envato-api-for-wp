@@ -45,7 +45,7 @@ class Envato_API {
    * @access    private
    * @since     1.0
    */
-  protected $public_url = 'http://marketplace.envato.com/api/edge/set.json';
+  protected $api_url = 'http://marketplace.envato.com/api/edge/set.json';
 
   /**
    * Error messages
@@ -92,11 +92,7 @@ class Envato_API {
       $this->set_error( 'set', __( 'The API "set" is a required parameter.', 'envato' ) );
     }
 
-    if ( $set_data !== '' ) {
-      $set_data = ":$set_data";
-    }
-
-    $url = "http://marketplace.envato.com/api/edge/$set$set_data.json";
+    $url = preg_replace( '/set/i', $set . ':' . $set_data, $this->api_url );
 
     /* set transient ID for later */
     $transient = 'public_' . $set . $set_data;
@@ -201,11 +197,7 @@ class Envato_API {
       $this->set_error( 'set', __( 'The API "set" is a required parameter.', 'envato' ) );
     }
 
-    if ( $set_data !== '' ) {
-      $set_data = ":$set_data";
-    }
-
-    $url = "http://marketplace.envato.com/api/edge/$user_name/$this->api_key/$set$set_data.json";
+    $url = preg_replace( '/set/i', $user_name . '/' . $this->api_key . '/' . $set . ':' . $set_data, $this->api_url );
 
     /* set transient ID for later */
     $transient = $user_name . '_' . $set . $set_data;
