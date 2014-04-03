@@ -144,32 +144,7 @@ class Envato_API {
    */
   public function item_details( $item_id, $allow_cache = true, $timeout = 300 ) {
 
-    $url = preg_replace( '/set/i', 'item:' . $item_id, $this->public_url );
-
-    /* set transient ID for later */
-    $transient = 'item_' . $item_id;
-
-    if ( $allow_cache ) {
-      $cache_results = $this->set_cache( $transient, $url, $timeout );
-      $results = $cache_results;
-    } else {
-      $results = $this->remote_request( $url );
-    }
-
-    if ( isset( $results->error ) ) {
-      $this->set_error( 'error_item_' . $item_id, $results->error );
-    }
-
-    if ( $errors = $this->api_errors() ) {
-      $this->clear_cache( $transient );
-      return $errors;
-    }
-
-    if ( isset( $results->item ) ) {
-      return $results->item;
-    }
-
-    return false;
+    return $this->public_set( 'item', $item_id, $allow_cache, $timeout );
 
   }
 
