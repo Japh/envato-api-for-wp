@@ -10,6 +10,7 @@
  * @package     WordPress
  * @subpackage  Envato API
  * @author      Japh <japh@satellitedev.com>
+ * @version     1.0
  * @since       1.0
  */
 
@@ -92,7 +93,6 @@ class Envato_API {
    *
    * @access    public
    * @since     1.0
-   * @updated   1.3
    */
   public function public_set( $set = '', $set_data = '', $allow_cache = true, $timeout = 3600 ) {
 
@@ -110,7 +110,6 @@ class Envato_API {
    *
    * @access    public
    * @since     1.0
-   * @updated   1.3
    */
   public function private_user_data( $set = '', $user_name = '', $set_data = '', $allow_cache = false, $timeout = 300 ) {
 
@@ -164,7 +163,6 @@ class Envato_API {
    *
    * @access    public
    * @since     1.0
-   * @updated   1.3
    */
   public function wp_list_themes( $allow_cache = true, $timeout = 300 ) {
 
@@ -208,7 +206,6 @@ class Envato_API {
    *
    * @access    public
    * @since     1.0
-   * @updated   1.3
    */
   public function item_details( $item_id, $allow_cache = true, $timeout = 300 ) {
 
@@ -252,7 +249,7 @@ class Envato_API {
    * @return    mixed
    *
    * @access    public
-   * @since     1.3
+   * @since     1.0
    */
   public function set_cache( $transient = '', $url = '', $timeout = 300 ) {
 
@@ -291,7 +288,7 @@ class Envato_API {
    * @return    void
    *
    * @access    public
-   * @since     1.3
+   * @since     1.0
    */
   public function clear_cache( $transient = '' ) {
 
@@ -306,7 +303,7 @@ class Envato_API {
    * @return    string      Returns a DB safe transient ID.
    *
    * @access    public
-   * @since     1.3
+   * @since     1.0
    */
   public function validate_transient( $id = '' ) {
 
