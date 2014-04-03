@@ -96,6 +96,41 @@ class Envato_API {
    */
   public function public_set( $set = '', $set_data = '', $allow_cache = true, $timeout = 3600 ) {
 
+    if ( $set == '' ) {
+      $this->set_error( 'set', __( 'The API "set" is a required parameter.', 'envato' ) );
+    }
+
+    if ( $set_data !== '' ) {
+      $set_data = ":$set_data";
+    }
+
+    $url = "http://marketplace.envato.com/api/edge/$set$set_data.json";
+
+    /* set transient ID for later */
+    $transient = 'public_' . $set . $set_data;
+
+    if ( $allow_cache ) {
+      $cache_results = $this->set_cache( $transient, $url, $timeout );
+      $results = $cache_results;
+    } else {
+      $results = $this->remote_request( $url );
+    }
+
+    if ( isset( $results->error ) ) {
+      $this->set_error( 'error_' . $set, $results->error );
+    }
+
+    if ( $errors = $this->api_errors() ) {
+      $this->clear_cache( $transient );
+      return $errors;
+    }
+
+    if ( isset( $results->$set ) ) {
+      return $results->$set;
+    }
+
+    return false;
+
   }
 
   /**
