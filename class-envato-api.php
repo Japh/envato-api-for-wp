@@ -99,6 +99,46 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the details for a specific marketplace item.
+   *
+   * @param     string      $item_id The id of the item you need information for.
+   * @return    object      Details for the given item.
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function item_details( $item_id, $allow_cache = true, $timeout = 300 ) {
+
+    $url = preg_replace( '/set/i', 'item:' . $item_id, $this->public_url );
+
+    /* set transient ID for later */
+    $transient = 'item_' . $item_id;
+
+    if ( $allow_cache ) {
+      $cache_results = $this->set_cache( $transient, $url, $timeout );
+      $results = $cache_results;
+    } else {
+      $results = $this->remote_request( $url );
+    }
+
+    if ( isset( $results->error ) ) {
+      $this->set_error( 'error_item_' . $item_id, $results->error );
+    }
+
+    if ( $errors = $this->api_errors() ) {
+      $this->clear_cache( $transient );
+      return $errors;
+    }
+
+    if ( isset( $results->item ) ) {
+      return $results->item;
+    }
+
+    return false;
+
+  }
+
+  /**
    * Get private data.
    *
    * @param     string      Available sets: 'vitals', 'earnings-and-sales-by-month', 'statement', 'recent-sales', 'account', 'verify-purchase', 'download-purchase', 'wp-list-themes', 'wp-download'
@@ -196,46 +236,6 @@ class Envato_API {
     }
 
     return false;
-  }
-
-  /**
-   * Retrieve the details for a specific marketplace item.
-   *
-   * @param     string      $item_id The id of the item you need information for.
-   * @return    object      Details for the given item.
-   *
-   * @access    public
-   * @since     1.0
-   */
-  public function item_details( $item_id, $allow_cache = true, $timeout = 300 ) {
-
-    $url = preg_replace( '/set/i', 'item:' . $item_id, $this->public_url );
-
-    /* set transient ID for later */
-    $transient = 'item_' . $item_id;
-
-    if ( $allow_cache ) {
-      $cache_results = $this->set_cache( $transient, $url, $timeout );
-      $results = $cache_results;
-    } else {
-      $results = $this->remote_request( $url );
-    }
-
-    if ( isset( $results->error ) ) {
-      $this->set_error( 'error_item_' . $item_id, $results->error );
-    }
-
-    if ( $errors = $this->api_errors() ) {
-      $this->clear_cache( $transient );
-      return $errors;
-    }
-
-    if ( isset( $results->item ) ) {
-      return $results->item;
-    }
-
-    return false;
-
   }
 
   /**
