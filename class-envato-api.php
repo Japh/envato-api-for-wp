@@ -222,7 +222,7 @@ class Envato_API {
    * @access    public
    * @since     1.0
    */
-  public function item( $item_id, $allow_cache = true, $timeout = 3600 ) {
+  public function item( $item_id = '', $allow_cache = true, $timeout = 3600 ) {
 
     return $this->public_set( 'item', $item_id, $allow_cache, $timeout );
 
