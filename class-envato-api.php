@@ -347,6 +347,24 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the new files for a specific marketplace and category.
+   *
+   * @param     string      $site The name of the marketplace to retrieve from.
+   * @param     string      $category The name of the category to retrieve from.
+   * @return    object      Details for new files.
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function new_files( $site = '', $category = '', $allow_cache = true, $timeout = 3600 ) {
+
+    $expression = $site . ',' . urlencode( $category );
+
+    return $this->public_set( 'new-files', $expression, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Set the user name for private set method requests.
    *
    * @param     string      The user name.
