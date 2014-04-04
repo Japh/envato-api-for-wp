@@ -152,6 +152,25 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the latest forum posts for a specific user.
+   *
+   * @param     string      $user_name The name of the user to retrieve from.
+   * @return    object      Details for the latest forum posts
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function forum_posts( $user_name = '', $allow_cache = true, $timeout = 180 ) {
+
+    if ( empty( $user_name ) ) {
+        $user_name = $this->user_name;
+    }
+
+    return $this->public_set( 'forum_posts', $user_name, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Retrieve the details for a specific marketplace item.
    *
    * @param     string      $item_id The id of the item you need information for.
