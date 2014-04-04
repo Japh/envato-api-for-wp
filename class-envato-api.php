@@ -122,6 +122,25 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the recently active threads for a specific marketplace forum.
+   *
+   * @param     string      $site The name of the marketplace to retrieve from.
+   * @return    object      Details for the active threads.
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function active_threads( $site = '', $allow_cache = true, $timeout = 180 ) {
+
+/*    if ( empty( $site ) ) {
+        $this->set_error( 'site', __( 'No marketplace name was provided to fetch active threads from.', 'envato' ) );
+    }*/
+
+    return $this->public_set( 'active-threads', $site, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Retrieve the details for a specific marketplace item.
    *
    * @param     string      $item_id The id of the item you need information for.
