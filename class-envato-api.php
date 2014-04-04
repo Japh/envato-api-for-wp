@@ -137,6 +137,21 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the number of files in major categories for a specific marketplace.
+   *
+   * @param     string      $site The name of the marketplace to retrieve from.
+   * @return    object      Details for the number of files.
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function number_of_files( $site = '', $allow_cache = true, $timeout = 3600 ) {
+
+    return $this->public_set( 'number-of-files', $site, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Retrieve the details for a specific marketplace item.
    *
    * @param     string      $item_id The id of the item you need information for.
