@@ -249,6 +249,25 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the number of items a specific user has for sale on each marketplace.
+   *
+   * @param     string      $user_name The name of the user to retrieve from.
+   * @return    object      Details for the users items for sale
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function user_items_by_site( $user_name = '', $allow_cache = true, $timeout = 180 ) {
+
+    if ( empty( $user_name ) ) {
+        $user_name = $this->user_name;
+    }
+
+    return $this->public_set( 'user-items-by-site', $user_name, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Retrieve the details for a specific marketplace item.
    *
    * @param     string      $item_id The id of the item you need information for.
