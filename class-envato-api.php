@@ -280,7 +280,7 @@ class Envato_API {
    */
   public function search( $query = '', $site = '', $categories = '', $allow_cache = true, $timeout = 180 ) {
 
-    $search_expression = $site . ',' . $categories . ',' . $query;
+    $search_expression = $site . ',' . urlencode( $categories ) . ',' . $query;
 
     return $this->public_set( 'search', $search_expression, $allow_cache, $timeout );
 
