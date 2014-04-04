@@ -332,6 +332,21 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the features for a specific marketplace.
+   *
+   * @param     string      $site The name of the marketplace to retrieve from.
+   * @return    object      Details for features.
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function features( $site = '', $allow_cache = true, $timeout = 180 ) {
+
+    return $this->public_set( 'features', $site, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Set the user name for private set method requests.
    *
    * @param     string      The user name.
