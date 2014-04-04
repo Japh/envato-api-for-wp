@@ -132,10 +132,6 @@ class Envato_API {
    */
   public function active_threads( $site = '', $allow_cache = true, $timeout = 180 ) {
 
-/*    if ( empty( $site ) ) {
-        $this->set_error( 'site', __( 'No marketplace name was provided to fetch active threads from.', 'envato' ) );
-    }*/
-
     return $this->public_set( 'active-threads', $site, $allow_cache, $timeout );
 
   }
