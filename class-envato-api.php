@@ -387,6 +387,21 @@ class Envato_API {
   }
 
   /**
+   * Retrieve random new files for a specific marketplace.
+   *
+   * @param     string      $site The name of the marketplace to retrieve from.
+   * @return    object      Details for new files.
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function random_new_files( $site = '', $allow_cache = true, $timeout = 600 ) {
+
+    return $this->public_set( 'random-new-files', $site, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Set the user name for private set method requests.
    *
    * @param     string      The user name.
