@@ -171,6 +171,20 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the API release information.
+   *
+   * @return    object      Details for the API releases
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function releases( $allow_cache = true, $timeout = 300 ) {
+
+    return $this->public_set( 'releases', '', $allow_cache, $timeout );
+
+  }
+
+  /**
    * Retrieve the details for a specific marketplace item.
    *
    * @param     string      $item_id The id of the item you need information for.
