@@ -185,6 +185,21 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the details for a specific forum thread.
+   *
+   * @param     string      $thread_id The ID of the thread to retrieve from.
+   * @return    object      Details for the forum thread
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function thread_status( $thread_id = '', $allow_cache = true, $timeout = 180 ) {
+
+    return $this->public_set( 'thread-status', $thread_id, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Retrieve the details for a specific marketplace item.
    *
    * @param     string      $item_id The id of the item you need information for.
