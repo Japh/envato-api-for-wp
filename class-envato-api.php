@@ -214,6 +214,22 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the price and licensing details for a specific marketplace item.
+   * (Does not show whether the item is 100% GPL or not)
+   *
+   * @param     string      $item_id The id of the item you need information for.
+   * @return    object      Details for the given item.
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function item_prices( $item_id = '', $allow_cache = true, $timeout = 3600 ) {
+
+    return $this->public_set( 'item-prices', $item_id, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Retrieve the details for a specific marketplace item.
    *
    * @param     string      $item_id The id of the item you need information for.
