@@ -287,6 +287,21 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the popular files for a specific marketplace.
+   *
+   * @param     string      $site The name of the marketplace to retrieve from.
+   * @return    object      Details for the popular files.
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function popular( $site = '', $allow_cache = true, $timeout = 3600 ) {
+
+    return $this->public_set( 'popular', $site, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Retrieve the details for a specific marketplace item.
    *
    * @param     string      $item_id The id of the item you need information for.
