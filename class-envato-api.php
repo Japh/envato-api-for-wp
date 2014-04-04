@@ -200,6 +200,20 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the total number of users for the Envato marketplaces.
+   *
+   * @return    object      Details of the total number of marketplace users
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function total_users( $allow_cache = true, $timeout = 3600 ) {
+
+    return $this->public_set( 'total-users', '', $allow_cache, $timeout );
+
+  }
+
+  /**
    * Retrieve the details for a specific marketplace item.
    *
    * @param     string      $item_id The id of the item you need information for.
