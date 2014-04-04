@@ -230,6 +230,25 @@ class Envato_API {
   }
 
   /**
+   * Retrieve information for a specific user.
+   *
+   * @param     string      $user_name The name of the user to retrieve from.
+   * @return    object      Details for user
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function user( $user_name = '', $allow_cache = true, $timeout = 180 ) {
+
+    if ( empty( $user_name ) ) {
+        $user_name = $this->user_name;
+    }
+
+    return $this->public_set( 'user', $user_name, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Retrieve the details for a specific marketplace item.
    *
    * @param     string      $item_id The id of the item you need information for.
