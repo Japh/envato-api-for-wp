@@ -317,6 +317,21 @@ class Envato_API {
   }
 
   /**
+   * Retrieve a collection.
+   *
+   * @param     string      $collection_id The ID of the collection to retrieve from.
+   * @return    object      Details for the collection.
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function collection( $collection_id = '', $allow_cache = true, $timeout = 3600 ) {
+
+    return $this->public_set( 'collection', $collection_id, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Set the user name for private set method requests.
    *
    * @param     string      The user name.
