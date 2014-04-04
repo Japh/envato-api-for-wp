@@ -268,6 +268,25 @@ class Envato_API {
   }
 
   /**
+   * Perform a marketplace search.
+   *
+   * @param     string      $query The search query.
+   * @param     string      $site The name of the marketplace to search.
+   * @param     string      $categories (optional) Category and sub-category to search.
+   * @return    object      Search results (limited to first 50 results)
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function search( $query = '', $site = '', $categories = '', $allow_cache = true, $timeout = 180 ) {
+
+    $search_expression = $site . ',' . $categories . ',' . $query;
+
+    return $this->public_set( 'search', $search_expression, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Retrieve the details for a specific marketplace item.
    *
    * @param     string      $item_id The id of the item you need information for.
