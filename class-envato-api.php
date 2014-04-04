@@ -365,6 +365,28 @@ class Envato_API {
   }
 
   /**
+   * Retrieve the new files for a specific user and marketplace.
+   *
+   * @param     string      $user_name The name of the user to retrieve from.
+   * @param     string      $site The name of the marketplace to retrieve from.
+   * @return    object      Details for new files.
+   *
+   * @access    public
+   * @since     1.0
+   */
+  public function new_files_from_user( $user_name = '', $site = '', $allow_cache = true, $timeout = 900 ) {
+
+    if ( empty( $user_name ) ) {
+        $user_name = $this->user_name;
+    }
+
+    $expression = $user_name . ',' . $site;
+
+    return $this->public_set( 'new-files-from-user', $expression, $allow_cache, $timeout );
+
+  }
+
+  /**
    * Set the user name for private set method requests.
    *
    * @param     string      The user name.
